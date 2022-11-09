@@ -1,0 +1,4 @@
+/*
+todo: add H2 DB for tests
+todo: add test for repository
+todo: микросервисы?
