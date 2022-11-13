@@ -1,4 +1,4 @@
-package com.example.springmvccalcuclator.data;
+package com.example.springmvccalcuclator.repository;
 
 import com.example.springmvccalcuclator.domain.Operation;
 import org.junit.jupiter.api.Assertions;
@@ -7,14 +7,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 
 @SpringBootTest
+@Transactional
 public class OperationsRepositoryIT {
-
     @Autowired
     private OperationsRepository repository;
+
+//    @AfterEach
+//    public void afterEach(){
+//        repository.deleteAll();
+//    }
 
     @Test
     @DisplayName("Operation is saved then found")
@@ -22,7 +28,7 @@ public class OperationsRepositoryIT {
         Operation saved = repository.save(
                 new Operation(Operation.Type.SUM, 1.0, 2.0, 3.0));
         Operation findOperation = repository.findById(saved.getId()).orElse(null);
-
+        
         Assertions.assertNotNull(findOperation);
         Assertions.assertEquals(saved, findOperation);
     }
@@ -30,6 +36,8 @@ public class OperationsRepositoryIT {
     @Test
     @DisplayName("Should return most popular operation type")
     public void shouldReturnMostPopularOperationType(){
+        repository.findAll().forEach(System.out::println);
+
         repository.save(new Operation(Operation.Type.SUM, 1.0, 2.0, 3.0));
         repository.save(new Operation(Operation.Type.DIV, 6.0, 2.0, 3.0));
         repository.save(new Operation(Operation.Type.SUB, 3.0, 2.0, 1.0));

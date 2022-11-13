@@ -1,7 +1,7 @@
 package com.example.springmvccalcuclator.web.controller;
 
-import com.example.springmvccalcuclator.DivisionByZeroException;
-import com.example.springmvccalcuclator.data.OperationsRepository;
+import com.example.springmvccalcuclator.exeptions.DivisionByZeroException;
+import com.example.springmvccalcuclator.repository.OperationsRepository;
 import com.example.springmvccalcuclator.domain.Operation;
 import com.example.springmvccalcuclator.service.CalculatorServiceInterface;
 import com.example.springmvccalcuclator.web.dto.OperationDto;

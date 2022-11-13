@@ -1,4 +1,4 @@
-package com.example.springmvccalcuclator.data;
+package com.example.springmvccalcuclator.repository;
 
 import com.example.springmvccalcuclator.domain.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;

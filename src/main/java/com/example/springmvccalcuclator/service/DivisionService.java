@@ -1,6 +1,6 @@
 package com.example.springmvccalcuclator.service;
 
-import com.example.springmvccalcuclator.DivisionByZeroException;
+import com.example.springmvccalcuclator.exeptions.DivisionByZeroException;
 import com.example.springmvccalcuclator.aspects.OperationLog;
 import com.example.springmvccalcuclator.domain.Operation;
 import org.springframework.stereotype.Service;

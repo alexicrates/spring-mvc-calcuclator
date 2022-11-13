@@ -1,4 +1,3 @@
 /*
-todo: add H2 DB for tests
-todo: add test for repository
-todo: микросервисы?
+todo: разбить сервисы на отдельные приложения (use WebClient)
+todo: общую логику (domain, repository) засунуть в отдельные модули
