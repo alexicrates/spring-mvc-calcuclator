@@ -1,6 +1,9 @@
-package com.example.springmvccalcuclator.domain;
+package com.example.operation.domain;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -10,7 +13,6 @@ import java.util.Calendar;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"createdAt"})
-@ToString
 public class Operation {
 
     @Id

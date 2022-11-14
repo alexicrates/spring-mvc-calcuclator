@@ -1,7 +1,7 @@
 package com.example.springmvccalcuclator.service;
 
-import com.example.springmvccalcuclator.aspects.OperationLog;
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.aspects.OperationLog;
+import com.example.operation.domain.Operation;
 import org.springframework.stereotype.Service;
 
 @Service

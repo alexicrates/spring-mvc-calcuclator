@@ -1,7 +1,7 @@
 package com.example.springmvccalcuclator.aspects;
 
-import com.example.springmvccalcuclator.repository.OperationsRepository;
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.domain.Operation;
+import com.example.operation.repository.OperationsRepository;
 import com.example.springmvccalcuclator.service.SubtractionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

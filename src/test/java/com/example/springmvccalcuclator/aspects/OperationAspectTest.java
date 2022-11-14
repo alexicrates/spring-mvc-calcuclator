@@ -1,7 +1,8 @@
 package com.example.springmvccalcuclator.aspects;
 
-import com.example.springmvccalcuclator.repository.OperationsRepository;
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.aspects.OperationAspect;
+import com.example.operation.domain.Operation;
+import com.example.operation.repository.OperationsRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

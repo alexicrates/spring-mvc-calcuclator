@@ -1,8 +1,8 @@
 package com.example.springmvccalcuclator.web.controller;
 
+import com.example.operation.domain.Operation;
+import com.example.operation.repository.OperationsRepository;
 import com.example.springmvccalcuclator.exeptions.DivisionByZeroException;
-import com.example.springmvccalcuclator.repository.OperationsRepository;
-import com.example.springmvccalcuclator.domain.Operation;
 import com.example.springmvccalcuclator.service.CalculatorServiceInterface;
 import com.example.springmvccalcuclator.web.dto.OperationDto;
 import com.example.springmvccalcuclator.web.dto.OperationDtoMapper;
@@ -29,7 +29,6 @@ public class CalculatorController {
     @GetMapping(value = "/SUM", params = {"a", "b"})
     public OperationDto add(@RequestParam("a") Double a,
                                   @RequestParam("b") Double b) {
-
         Operation operation = addingService.calculate(a, b);
         return simpleMapper.operationToOperationDto(operation);
     }

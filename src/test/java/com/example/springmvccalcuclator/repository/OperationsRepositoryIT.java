@@ -1,6 +1,7 @@
 package com.example.springmvccalcuclator.repository;
 
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.domain.Operation;
+import com.example.operation.repository.OperationsRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

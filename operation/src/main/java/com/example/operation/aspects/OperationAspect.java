@@ -1,7 +1,7 @@
-package com.example.springmvccalcuclator.aspects;
+package com.example.operation.aspects;
 
-import com.example.springmvccalcuclator.repository.OperationsRepository;
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.domain.Operation;
+import com.example.operation.repository.OperationsRepository;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;

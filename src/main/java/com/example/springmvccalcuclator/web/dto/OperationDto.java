@@ -1,6 +1,6 @@
 package com.example.springmvccalcuclator.web.dto;
 
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.domain.Operation;
 import lombok.Getter;
 import lombok.Setter;
 

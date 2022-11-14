@@ -1,7 +1,7 @@
 package com.example.springmvccalcuclator.service;
 
 import com.example.springmvccalcuclator.exeptions.DivisionByZeroException;
-import com.example.springmvccalcuclator.domain.Operation;
+import com.example.operation.domain.Operation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
