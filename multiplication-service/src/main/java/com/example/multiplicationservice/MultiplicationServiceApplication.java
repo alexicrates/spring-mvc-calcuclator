@@ -1,13 +1,13 @@
-package com.example.springmvccalcuclator;
+package com.example.multiplicationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringMvcCalculatorApplication {
+public class MultiplicationServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringMvcCalculatorApplication.class, args);
+        SpringApplication.run(MultiplicationServiceApplication.class, args);
     }
 
 }

@@ -3,10 +3,12 @@ package com.example.operation.repository;
 import com.example.operation.domain.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.Optional;
 
+@Repository
 public interface OperationsRepository
         extends JpaRepository<Operation, Long> {
     @Query(value = """
