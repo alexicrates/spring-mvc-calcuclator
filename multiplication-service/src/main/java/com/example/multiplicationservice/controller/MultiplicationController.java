@@ -1,6 +1,6 @@
 package com.example.multiplicationservice.controller;
 
-import com.example.multiplicationservice.service.CalculatorServiceInterface;
+import com.example.multiplicationservice.service.MultiplicationService;
 import com.example.operation.domain.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MultiplicationController {
-    private final CalculatorServiceInterface multiplicationService;
+    private final MultiplicationService multiplicationService;
 
     @Autowired
-    public MultiplicationController(CalculatorServiceInterface multiplicationService) {
+    public MultiplicationController(MultiplicationService multiplicationService) {
         this.multiplicationService = multiplicationService;
     }
 

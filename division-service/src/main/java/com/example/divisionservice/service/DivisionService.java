@@ -6,8 +6,7 @@ import com.example.operation.domain.Operation;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DivisionService implements CalculatorServiceInterface {
-    @Override
+public class DivisionService {
     @OperationLog
     public Operation calculate(Double firstParameter, Double secondParameter) {
         if (secondParameter == 0)

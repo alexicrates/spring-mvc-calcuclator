@@ -1,3 +1,5 @@
 /*
-todo: разбить сервисы на отдельные приложения (use WebClient)
-todo: общую логику (domain, repository) засунуть в отдельные модули
+todo: интерфейсы не нужны (наверно), сервисы должны принимать объекты
+todo: spring cloud service discovery, consul, openfeign, actuator, почитать spring cloud doc
+todo: каждый сервис запускать на случайном порту в заданном в properties диапозоне
+todo: мб перенести адреса сервисов из кода в properties

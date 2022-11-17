@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.sql.Timestamp;
 
@@ -78,6 +79,7 @@ public class CalculatorController {
                 .uri("http://localhost:8084/DIV?a={a}&b={b}", a, b)
                 .retrieve()
                 .bodyToMono(Operation.class)
+                .onErrorResume(e -> Mono.error(new DivisionByZeroException()))
                 .block();
 
         return simpleMapper.operationToOperationDto(operation);
