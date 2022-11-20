@@ -1,4 +1,4 @@
-package com.example.springmvccalcuclator.properties;
+package com.example.springmvccalcuclator.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,10 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "calculator.url")
+@ConfigurationProperties(prefix = "service.name")
 @Getter
 @Setter
-public class ConfigProperties {
+public class ServiceNameConfigProperties {
     private String addition;
     private String subtraction;
     private String multiplication;

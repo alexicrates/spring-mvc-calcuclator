@@ -1,0 +1,11 @@
+server:
+  port: ${random.int(8400,8500)}
+
+spring:
+  application:
+    name: subtractionService
+
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}

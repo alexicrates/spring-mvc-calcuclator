@@ -1,11 +1,16 @@
 version: '3'
 
 services:
+  consul:
+    image: consul
+    hostname: localhost
+    ports:
+      - '8500:8500'
   postgres:
-    image: 'postgres'
+    image: postgres
     volumes:
       - operations-data:/var/lib/postgresql/data
-    container_name: 'db'
+    container_name: db
     ports:
       - '2345:5432'
     environment:
