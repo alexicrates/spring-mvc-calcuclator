@@ -1,4 +1,4 @@
-package com.example.addingservice.service;
+package com.example.additionservice.service;
 
 import com.example.operation.aspects.OperationLog;
 import com.example.operation.domain.Operation;

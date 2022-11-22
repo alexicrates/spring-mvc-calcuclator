@@ -1,6 +1,3 @@
 /*
-todo: интерфейсы не нужны (наверно), сервисы должны принимать объекты
-todo: spring cloud service discovery, consul, openfeign, actuator, почитать spring cloud doc
-todo: каждый сервис запускать на случайном порту в заданном в properties диапозоне + несколько экземпляров
-
+todo: consul config для калькулятора + divisionService; проперти(кол-во чисел после запятой) для divisionService менять в рантайме
 */

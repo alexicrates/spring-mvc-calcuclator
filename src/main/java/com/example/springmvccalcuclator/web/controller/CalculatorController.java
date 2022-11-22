@@ -2,43 +2,38 @@ package com.example.springmvccalcuclator.web.controller;
 
 import com.example.operation.domain.Operation;
 import com.example.operation.repository.OperationsRepository;
-import com.example.springmvccalcuclator.config.properties.ServiceNameConfigProperties;
 import com.example.springmvccalcuclator.exeptions.DivisionByZeroException;
 import com.example.springmvccalcuclator.web.dto.OperationDto;
 import com.example.springmvccalcuclator.web.dto.OperationDtoMapper;
-import lombok.RequiredArgsConstructor;
+import com.example.springmvccalcuclator.web.feignclients.AdditionServiceClient;
+import com.example.springmvccalcuclator.web.feignclients.DivisionServiceClient;
+import com.example.springmvccalcuclator.web.feignclients.MultiplicationServiceClient;
+import com.example.springmvccalcuclator.web.feignclients.SubtractionServiceClient;
+import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.sql.Timestamp;
 
 @RestController
 @RequestMapping(path = "/calculator")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CalculatorController {
     private final OperationsRepository repository;
     private final OperationDtoMapper simpleMapper;
-    private final ServiceNameConfigProperties serviceNameConfigProperties;
-    private final WebClient.Builder webClientBuilder;
+
+    private final AdditionServiceClient additionServiceClient;
+    private final SubtractionServiceClient subtractionServiceClient;
+    private final MultiplicationServiceClient multiplicationServiceClient;
+    private final DivisionServiceClient divisionServiceClient;
 
     @GetMapping(value = "/SUM", params = {"a", "b"})
     public OperationDto add(@RequestParam("a") Double a,
                                   @RequestParam("b") Double b) {
 
-        String additionServiceName = serviceNameConfigProperties.getAddition();
-
-        Operation operation = webClientBuilder
-                .build()
-                .get()
-                .uri("http://{name}/SUM?a={a}&b={b}", additionServiceName, a, b)
-                .retrieve()
-                .bodyToMono(Operation.class)
-                .block();
-
+        Operation operation = additionServiceClient.gerOperation(a, b);
         return simpleMapper.operationToOperationDto(operation);
     }
 
@@ -46,16 +41,7 @@ public class CalculatorController {
     public OperationDto subtract(@RequestParam("a") Double a,
                                   @RequestParam("b") Double b) {
 
-        String subtractionHost = serviceNameConfigProperties.getSubtraction();
-
-        Operation operation = webClientBuilder
-                .build()
-                .get()
-                .uri("http://{name}/SUB?a={a}&b={b}", subtractionHost, a, b)
-                .retrieve()
-                .bodyToMono(Operation.class)
-                .block();
-
+        Operation operation = subtractionServiceClient.gerOperation(a, b);
         return simpleMapper.operationToOperationDto(operation);
     }
 
@@ -63,16 +49,7 @@ public class CalculatorController {
     public OperationDto multiply(@RequestParam("a") Double a,
                                   @RequestParam("b") Double b) {
 
-        String multiplicationHost = serviceNameConfigProperties.getMultiplication();
-
-        Operation operation = webClientBuilder
-                .build()
-                .get()
-                .uri("http://{name}/MULT?a={a}&b={b}", multiplicationHost, a, b)
-                .retrieve()
-                .bodyToMono(Operation.class)
-                .block();
-
+        Operation operation = multiplicationServiceClient.gerOperation(a, b);
         return simpleMapper.operationToOperationDto(operation);
     }
 
@@ -80,17 +57,7 @@ public class CalculatorController {
     public OperationDto divide(@RequestParam("a") Double a,
                                   @RequestParam("b") Double b) {
 
-        String divisionHost = serviceNameConfigProperties.getDivision();
-
-        Operation operation = webClientBuilder
-                .build()
-                .get()
-                .uri("http://{name}/DIV?a={a}&b={b}", divisionHost, a, b)
-                .retrieve()
-                .bodyToMono(Operation.class)
-                .onErrorResume(e -> Mono.error(new DivisionByZeroException()))
-                .block();
-
+        Operation operation = divisionServiceClient.gerOperation(a, b);
         return simpleMapper.operationToOperationDto(operation);
     }
 
