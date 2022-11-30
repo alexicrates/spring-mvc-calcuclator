@@ -26,15 +26,12 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, JwtDecoder jwtDecoder) throws Exception {
-
-        JwtDecoder jwtDecoder1 = jwtDecoder();
-        boolean equals = jwtDecoder1 == jwtDecoder;
-        System.out.println("DECODERS: " + equals);
         return http
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .antMatchers("/calculator/**").hasAuthority("SCOPE_getOperation")
                         .anyRequest().authenticated())
                 .csrf().disable()
+                .sessionManagement().disable()
                 .oauth2ResourceServer(oauth2ResourceServer -> {
                     oauth2ResourceServer.jwt(jwt -> {
                         jwt.decoder(jwtDecoder);
@@ -43,9 +40,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public JwtDecoder jwtDecoder() {
+    public JwtDecoder jwtDecoder(OAuth2TokenValidator<Jwt> audienceValidator) {
         NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withPublicKey(this.key).build();
-        jwtDecoder.setJwtValidator(audienceValidator());
+        jwtDecoder.setJwtValidator(audienceValidator);
         return jwtDecoder;
     }
 
