@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: springMvcCalculator
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+      config:
+        enabled: true
+        format: yaml
+
+      discovery:
+        register: false

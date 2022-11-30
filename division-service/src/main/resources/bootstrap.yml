@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: divisionService
+
+  cloud:
+    consul:
+      config:
+        enabled: true
+        format: yaml
