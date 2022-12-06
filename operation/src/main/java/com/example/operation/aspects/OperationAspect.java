@@ -1,24 +1,24 @@
 package com.example.operation.aspects;
 
 import com.example.operation.domain.Operation;
-import com.example.operation.repository.OperationsRepository;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class OperationAspect {
-    private final OperationsRepository repository;
+    private final JmsTemplate jmsTemplate;
 
     @Autowired
-    public OperationAspect(OperationsRepository repository) {
-        this.repository = repository;
+    public OperationAspect(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
     }
 
     @AfterReturning(pointcut = "@annotation(OperationLog))", returning = "operation")
     public void saveReturnedOperation(Operation operation) {
-        repository.save(operation);
+        jmsTemplate.convertAndSend(operation);
     }
 }

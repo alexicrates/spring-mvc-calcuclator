@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ConditionalOnClass(DataSource.class)
+@ConditionalOnClass({DataSource.class})
 @EnableJpaRepositories
 @ComponentScan
 @EntityScan

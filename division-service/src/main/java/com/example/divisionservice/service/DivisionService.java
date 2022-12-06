@@ -23,8 +23,14 @@ public class DivisionService {
 
         String formattedResult = new DecimalFormat("#." + "0".repeat(precision)).
                 format(firstParameter / secondParameter);
+        String formattedFirstParameter = new DecimalFormat("#." + "0".repeat(precision)).
+                format(firstParameter);
+        String formattedSecondParameter = new DecimalFormat("#." + "0".repeat(precision)).
+                format(secondParameter);
 
-        return new Operation(Operation.Type.DIV, firstParameter, secondParameter,
-                Double.valueOf(formattedResult));
+        return new Operation(Operation.Type.DIV,
+                            Double.valueOf(formattedFirstParameter),
+                            Double.valueOf(formattedSecondParameter),
+                            Double.valueOf(formattedResult));
     }
 }

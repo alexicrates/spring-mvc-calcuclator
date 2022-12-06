@@ -1,9 +1,6 @@
 package com.example.operation.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -12,7 +9,7 @@ import java.util.Calendar;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"createdAt"})
+@ToString
 public class Operation {
 
     @Id
