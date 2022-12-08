@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.UUID;
 
 @Entity(name = "operations")
 @Getter
@@ -13,8 +14,7 @@ import java.util.Calendar;
 public class Operation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     @Column(length = 5, nullable = false)
     @Enumerated(EnumType.STRING)
@@ -33,6 +33,7 @@ public class Operation {
     private Calendar createdAt;
 
     public Operation(Type type, Double firstParameter, Double secondParameter, Double result) {
+        this.id = UUID.randomUUID();
         this.createdAt = Calendar.getInstance();
         this.type = type;
         this.firstParameter = firstParameter;
