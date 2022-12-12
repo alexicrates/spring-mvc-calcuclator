@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - redis-cache-data:/data
+    ports:
+      - "6379:6379"
+
   artemis:
     image: artemis-ubuntu
     container_name: artemis
@@ -12,6 +20,8 @@ services:
     image: consul
     container_name: consul
     hostname: localhost
+    volumes:
+      - consul-data:/consul/data
     ports:
       - "8500:8500"
       - "8600:8600/tcp"
@@ -31,3 +41,5 @@ services:
       - 'POSTGRES_DB=OperationsDB'
 volumes:
   operations-data:
+  redis-cache-data:
+  consul-data:

@@ -4,6 +4,7 @@ import com.example.operation.domain.Operation;
 import com.example.operation.event.OperationSentPublisher;
 import com.example.operation.repository.OperationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +22,10 @@ public class OperationSaverToDB implements OperationSaver{
     }
 
     @Override
-    public void saveOperation(Operation operation) {
+    @CachePut(value = "operations")
+    public Operation saveOperation(Operation operation) {
         repository.save(operation);
         publisher.publishOperationSentEvent(operation);
+        return operation;
     }
 }
