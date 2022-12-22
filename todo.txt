@@ -1,3 +1,1 @@
-/*
-todo: spring cache manager, @Cacheable, @Cacheput, @Cacheevict, redis cache, redis client
-*/
+todo: spring-actuator/prometeus, контейнер сервлетов, JavaEE спецификация, spring webflux/reactor

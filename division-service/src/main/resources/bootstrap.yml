@@ -7,3 +7,6 @@ spring:
       config:
         enabled: true
         format: yaml
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

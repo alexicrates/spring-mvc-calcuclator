@@ -27,6 +27,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, JwtDecoder jwtDecoder) throws Exception {
         return http
+                .authorizeRequests().antMatchers("/v2/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/swagger-resources/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/swagger-ui/**").permitAll()
+                .and()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .antMatchers("/calculator/**").hasAuthority("SCOPE_getOperation")
                         .anyRequest().authenticated())
